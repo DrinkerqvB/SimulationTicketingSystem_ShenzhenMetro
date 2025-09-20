@@ -17,5 +17,14 @@ public:
 
 private:
 	Ui::HomePageClass *ui;
+	QPixmap lineMap;
+
+
+signals:
+
+
+private slots:
+
+
 };
 

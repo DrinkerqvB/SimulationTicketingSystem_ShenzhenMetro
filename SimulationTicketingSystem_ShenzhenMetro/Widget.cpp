@@ -8,6 +8,12 @@ Widget::Widget(QWidget *parent)
 
     stackedWidget = new QStackedWidget(this);
     homePage = new HomePage;
+    buyPage = new BuyPage;
+    payPage = new PayPage;
+    mapSearchPage = new MapSearchPage;
+
+    
+
 
 }
 

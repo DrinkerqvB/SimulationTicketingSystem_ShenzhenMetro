@@ -5,6 +5,7 @@ BuyPage::BuyPage(QWidget *parent)
 	, ui(new Ui::BuyPageClass())
 {
 	ui->setupUi(this);
+	
 }
 
 BuyPage::~BuyPage()

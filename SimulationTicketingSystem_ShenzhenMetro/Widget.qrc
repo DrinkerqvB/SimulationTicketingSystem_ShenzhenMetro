@@ -1,4 +1,5 @@
 <RCC>
-    <qresource prefix="Widget">
+    <qresource prefix="/images">
+        <file>SZMetroMap/SZMetroMap.jpg</file>
     </qresource>
 </RCC>
