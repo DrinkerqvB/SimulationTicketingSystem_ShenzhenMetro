@@ -35,14 +35,50 @@
     <ClCompile Include="Widget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ResourceCompile Include="$pro_name$.rc">
-    </ResourceCompile>
-    <None Include="$pro_name$.ico">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="$pro_name$.def">
-      <Filter>Resource Files</Filter>
-    </None>
-
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HomePage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PayPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapSearchPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="HomePage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="BuyPage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PayPage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="MapSearchPage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="HomePage.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="BuyPage.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="PayPage.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MapSearchPage.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>
