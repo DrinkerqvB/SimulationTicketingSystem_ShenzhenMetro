@@ -3,6 +3,8 @@
 #include <QWidget>
 #include "ui_PayPage.h"
 
+#define INDEX_OF_PAYPAGE 3
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class PayPageClass; };
 QT_END_NAMESPACE

@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include "ui_HomePage.h"
+#include <QGraphicsPixmapItem>
 
 #define INDEX_OF_HOMEPAGE 1
 
@@ -19,7 +20,9 @@ public:
 
 private:
 	Ui::HomePageClass *ui;
-	QPixmap lineMap;
+	QPixmap* linesMap;
+	QGraphicsPixmapItem* linesMap_pixmapItem;
+	QGraphicsScene* scene_map;
 
 
 signals:

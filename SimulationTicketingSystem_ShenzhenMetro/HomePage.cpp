@@ -5,8 +5,17 @@ HomePage::HomePage(QWidget *parent)
 	, ui(new Ui::HomePageClass())
 {
 	ui->setupUi(this);
-	lineMap = QPixmap(":/images/SZMetroMap/SZMetroMap.jpg");
-	//ui->textEdit_linesMap->
+
+	linesMap = new QPixmap(":/images/SZMetroMap/SZMetroMap.jpg");
+	linesMap_pixmapItem = new QGraphicsPixmapItem(*linesMap);
+
+	linesMap_pixmapItem->setScale(0.16);
+
+	scene_map = new QGraphicsScene;
+	scene_map->addItem(linesMap_pixmapItem);
+
+	ui->graphicsView_linesMap->setScene(scene_map);
+	ui->graphicsView_linesMap->show();
 }
 
 HomePage::~HomePage()

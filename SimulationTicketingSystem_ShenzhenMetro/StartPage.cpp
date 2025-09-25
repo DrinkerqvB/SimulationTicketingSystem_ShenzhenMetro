@@ -21,5 +21,5 @@ void StartPage::on_pushButton_enterSystem_clicked(void)
 
 void StartPage::on_pushButton_exitSystem_clicked(void)
 {
-	this->close();
+	emit exitSystem();
 }

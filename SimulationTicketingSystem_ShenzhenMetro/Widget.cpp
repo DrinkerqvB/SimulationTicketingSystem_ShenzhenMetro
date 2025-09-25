@@ -53,18 +53,25 @@ Widget::Widget(QWidget *parent)
     //各页面指针进堆叠
     stackedWidget->insertWidget(INDEX_OF_STARTPAGE, startPage);
     stackedWidget->insertWidget(INDEX_OF_HOMEPAGE, homePage);
+    stackedWidget->insertWidget(INDEX_OF_BUYPAGE, buyPage);
+    stackedWidget->insertWidget(INDEX_OF_PAYPAGE, payPage);
+    stackedWidget->insertWidget(INDEX_OF_MAPSEARCHPAGE, mapSearchPage);
 
     //设置
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->addWidget(stackedWidget);
     layout->setContentsMargins(0, 0, 0, 0);
     setLayout(layout);
+    resize(800, 600);
 
     stackedWidget->setCurrentWidget(startPage);
 
 
     connect(startPage, &StartPage::enterSystem, [=]() {
         stackedWidget->setCurrentWidget(homePage);
+        });
+    connect(startPage, &StartPage::exitSystem, [=]() {
+        this->close();
         });
 
 }

@@ -23,6 +23,7 @@ private:
 
 signals:
 	void enterSystem(void);
+	void exitSystem(void);
 
 
 private slots:

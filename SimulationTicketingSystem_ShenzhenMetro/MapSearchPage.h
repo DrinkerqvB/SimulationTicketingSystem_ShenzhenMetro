@@ -3,6 +3,8 @@
 #include <QWidget>
 #include "ui_MapSearchPage.h"
 
+#define INDEX_OF_MAPSEARCHPAGE 4
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MapSearchPageClass; };
 QT_END_NAMESPACE
