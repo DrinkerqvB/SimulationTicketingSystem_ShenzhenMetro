@@ -52,6 +52,9 @@
     <ClCompile Include="MapSearchPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StartPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="HomePage.h">
@@ -66,6 +69,9 @@
     <QtMoc Include="MapSearchPage.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="StartPage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="HomePage.ui">
@@ -78,6 +84,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="MapSearchPage.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="StartPage.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

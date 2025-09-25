@@ -10,6 +10,8 @@
 #include "PayPage.h"
 #include "MapSearchPage.h"
 
+#define INDEX_OF_WIDGET 0
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class WidgetClass; };

@@ -3,6 +3,8 @@
 #include <QWidget>
 #include "ui_HomePage.h"
 
+#define INDEX_OF_HOMEPAGE 1
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class HomePageClass; };
 QT_END_NAMESPACE

@@ -6,7 +6,7 @@ HomePage::HomePage(QWidget *parent)
 {
 	ui->setupUi(this);
 	lineMap = QPixmap(":/images/SZMetroMap/SZMetroMap.jpg");
-	
+	//ui->textEdit_linesMap->
 }
 
 HomePage::~HomePage()

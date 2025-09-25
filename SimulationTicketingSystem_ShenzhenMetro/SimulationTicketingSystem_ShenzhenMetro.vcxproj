@@ -97,12 +97,14 @@
     <QtUic Include="HomePage.ui" />
     <QtUic Include="MapSearchPage.ui" />
     <QtUic Include="PayPage.ui" />
+    <QtUic Include="StartPage.ui" />
     <QtUic Include="Widget.ui" />
     <QtMoc Include="Widget.h" />
     <ClCompile Include="BuyPage.cpp" />
     <ClCompile Include="HomePage.cpp" />
     <ClCompile Include="MapSearchPage.cpp" />
     <ClCompile Include="PayPage.cpp" />
+    <ClCompile Include="StartPage.cpp" />
     <ClCompile Include="Widget.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -117,6 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MapSearchPage.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="StartPage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
