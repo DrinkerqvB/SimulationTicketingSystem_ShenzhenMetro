@@ -43,24 +43,30 @@ Widget::Widget(QWidget *parent)
 
     stackedWidget = new QStackedWidget(this);
 
-    //Widget* startPage = new Widget;
+    //给各页面分配内存
+    startPage = new StartPage;
     homePage = new HomePage;
     buyPage = new BuyPage;
     payPage = new PayPage;
     mapSearchPage = new MapSearchPage;
 
-    //stackedWidget->insertWidget(INDEX_OF_WIDGET, this);
+    //各页面指针进堆叠
+    stackedWidget->insertWidget(INDEX_OF_STARTPAGE, startPage);
     stackedWidget->insertWidget(INDEX_OF_HOMEPAGE, homePage);
 
+    //设置
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->addWidget(stackedWidget);
     layout->setContentsMargins(0, 0, 0, 0);
     setLayout(layout);
 
-    stackedWidget->setCurrentWidget(homePage);
+    stackedWidget->setCurrentWidget(startPage);
 
-    setWindowTitle("地铁售票系统");
-    resize(800, 600); // 设置初始窗口大小
+
+    connect(startPage, &StartPage::enterSystem, [=]() {
+        stackedWidget->setCurrentWidget(homePage);
+        });
+
 }
 
 Widget::~Widget()
@@ -69,12 +75,3 @@ Widget::~Widget()
 }
 
 
-void Widget::on_pushButton_enterSystem_clicked(void)
-{
-    stackedWidget->setCurrentWidget(homePage);
-}
-
-void Widget::on_pushButton_exitSystem_clicked(void)
-{
-    this->close();
-}

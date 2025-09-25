@@ -16,6 +16,7 @@ StartPage::~StartPage()
 void StartPage::on_pushButton_enterSystem_clicked(void)
 {
 	//stackedWidget->setCurrentWidget(homePage);
+	emit enterSystem();
 }
 
 void StartPage::on_pushButton_exitSystem_clicked(void)

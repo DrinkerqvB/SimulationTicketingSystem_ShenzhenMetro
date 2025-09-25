@@ -3,6 +3,8 @@
 #include <QWidget>
 #include "ui_StartPage.h"
 
+#define INDEX_OF_STARTPAGE 0
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class StartPageClass; };
 QT_END_NAMESPACE
@@ -20,7 +22,7 @@ private:
 
 
 signals:
-	void StartPage_enterSystem(void);
+	void enterSystem(void);
 
 
 private slots:
