@@ -108,6 +108,7 @@
     <ClCompile Include="BuyPage.cpp" />
     <ClCompile Include="HomePage.cpp" />
     <ClCompile Include="MapSearchPage.cpp" />
+    <ClCompile Include="MetroLine.cpp" />
     <ClCompile Include="PaymentCalculation.cpp" />
     <ClCompile Include="PayPage.cpp" />
     <ClCompile Include="QXlsx\source\xlsxabstractooxmlfile.cpp" />
@@ -163,6 +164,7 @@
     <QtMoc Include="StartPage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MetroLine.h" />
     <ClInclude Include="PaymentCalculation.h" />
     <ClInclude Include="QXlsx\header\xlsxabstractooxmlfile.h" />
     <ClInclude Include="QXlsx\header\xlsxabstractooxmlfile_p.h" />
