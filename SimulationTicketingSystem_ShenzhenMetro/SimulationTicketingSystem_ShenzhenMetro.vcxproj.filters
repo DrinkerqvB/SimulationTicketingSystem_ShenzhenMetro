@@ -55,6 +55,9 @@
     <ClCompile Include="StartPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PaymentCalculation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="HomePage.h">
@@ -89,5 +92,18 @@
     <QtUic Include="StartPage.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PaymentCalculation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CostSheet\附件1 2025年第一批新线开通线网普通车厢票价表.xlsx">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="CostSheet\附件2 2025年第一批新线开通线网商务车厢票价表.xlsx">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

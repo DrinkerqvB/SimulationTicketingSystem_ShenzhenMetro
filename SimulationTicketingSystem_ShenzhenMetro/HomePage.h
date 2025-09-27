@@ -26,10 +26,14 @@ private:
 
 
 signals:
-
+	void exitSystem(void);
+	void enterBuyPage(void);
+	void enterMapSearchPage(void);
 
 private slots:
-
+	void on_pushButton_buyTicket_clicked(void);
+	void on_pushButton_searchingMap_clicked(void);
+	void on_pushButton_exit_clicked(void);
 
 };
 

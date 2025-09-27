@@ -50,7 +50,7 @@ Widget::Widget(QWidget *parent)
     payPage = new PayPage;
     mapSearchPage = new MapSearchPage;
 
-    //各页面指针进堆叠
+    //各页面指针压进堆叠
     stackedWidget->insertWidget(INDEX_OF_STARTPAGE, startPage);
     stackedWidget->insertWidget(INDEX_OF_HOMEPAGE, homePage);
     stackedWidget->insertWidget(INDEX_OF_BUYPAGE, buyPage);
@@ -73,6 +73,16 @@ Widget::Widget(QWidget *parent)
     connect(startPage, &StartPage::exitSystem, [=]() {
         this->close();
         });
+    connect(homePage, &HomePage::enterBuyPage, [=]() {
+        stackedWidget->setCurrentWidget(buyPage);
+        });
+    connect(homePage, &HomePage::enterMapSearchPage, [=]() {
+        stackedWidget->setCurrentWidget(mapSearchPage);
+        });
+    connect(homePage, &HomePage::exitSystem, [=]() {
+        this->close();
+        });
+
 
 }
 

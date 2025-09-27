@@ -15,11 +15,28 @@ HomePage::HomePage(QWidget *parent)
 	scene_map->addItem(linesMap_pixmapItem);
 
 	ui->graphicsView_linesMap->setScene(scene_map);
+	ui->graphicsView_linesMap->setDragMode(QGraphicsView::ScrollHandDrag);
 	ui->graphicsView_linesMap->show();
 }
 
 HomePage::~HomePage()
 {
 	delete ui;
+}
+
+
+void HomePage::on_pushButton_buyTicket_clicked(void)
+{
+	emit enterBuyPage();
+}
+
+void HomePage::on_pushButton_searchingMap_clicked(void)
+{
+	emit enterMapSearchPage();
+}
+
+void HomePage::on_pushButton_exit_clicked(void)
+{
+	emit exitSystem();
 }
 
