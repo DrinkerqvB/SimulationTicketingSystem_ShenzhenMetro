@@ -63,6 +63,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Project\Real_Project\InnovationTrainingCourseB\SimulationTicketingSystem_ShenzhenMetro\SimulationTicketingSystem_ShenzhenMetro\QXlsx\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -105,6 +110,39 @@
     <ClCompile Include="MapSearchPage.cpp" />
     <ClCompile Include="PaymentCalculation.cpp" />
     <ClCompile Include="PayPage.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxabstractooxmlfile.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxabstractsheet.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxcell.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxcellformula.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxcelllocation.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxcellrange.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxcellreference.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxchart.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxchartsheet.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxcolor.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxconditionalformatting.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxcontenttypes.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxdatavalidation.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxdatetype.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxdocpropsapp.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxdocpropscore.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxdocument.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxdrawing.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxdrawinganchor.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxformat.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxmediafile.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxnumformatparser.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxrelationships.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxrichstring.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxsharedstrings.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxsimpleooxmlfile.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxstyles.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxtheme.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxutility.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxworkbook.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxworksheet.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxzipreader.cpp" />
+    <ClCompile Include="QXlsx\source\xlsxzipwriter.cpp" />
     <ClCompile Include="StartPage.cpp" />
     <ClCompile Include="Widget.cpp" />
     <ClCompile Include="main.cpp" />
@@ -126,6 +164,53 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PaymentCalculation.h" />
+    <ClInclude Include="QXlsx\header\xlsxabstractooxmlfile.h" />
+    <ClInclude Include="QXlsx\header\xlsxabstractooxmlfile_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxabstractsheet.h" />
+    <ClInclude Include="QXlsx\header\xlsxabstractsheet_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxcell.h" />
+    <ClInclude Include="QXlsx\header\xlsxcellformula.h" />
+    <ClInclude Include="QXlsx\header\xlsxcellformula_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxcelllocation.h" />
+    <ClInclude Include="QXlsx\header\xlsxcellrange.h" />
+    <ClInclude Include="QXlsx\header\xlsxcellreference.h" />
+    <ClInclude Include="QXlsx\header\xlsxcell_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxchart.h" />
+    <ClInclude Include="QXlsx\header\xlsxchartsheet.h" />
+    <ClInclude Include="QXlsx\header\xlsxchartsheet_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxchart_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxcolor_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxconditionalformatting.h" />
+    <ClInclude Include="QXlsx\header\xlsxconditionalformatting_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxcontenttypes_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxdatavalidation.h" />
+    <ClInclude Include="QXlsx\header\xlsxdatavalidation_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxdatetype.h" />
+    <ClInclude Include="QXlsx\header\xlsxdocpropsapp_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxdocpropscore_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxdocument_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxdrawinganchor_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxdrawing_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxformat.h" />
+    <ClInclude Include="QXlsx\header\xlsxformat_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxglobal.h" />
+    <ClInclude Include="QXlsx\header\xlsxmediafile_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxnumformatparser_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxrelationships_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxrichstring.h" />
+    <ClInclude Include="QXlsx\header\xlsxrichstring_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxsharedstrings_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxsimpleooxmlfile_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxstyles_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxtheme_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxutility_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxworkbook.h" />
+    <ClInclude Include="QXlsx\header\xlsxworkbook_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxworksheet.h" />
+    <ClInclude Include="QXlsx\header\xlsxworksheet_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxzipreader_p.h" />
+    <ClInclude Include="QXlsx\header\xlsxzipwriter_p.h" />
+    <QtMoc Include="QXlsx\header\xlsxdocument.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CostSheet\附件1 2025年第一批新线开通线网普通车厢票价表.xlsx" />
