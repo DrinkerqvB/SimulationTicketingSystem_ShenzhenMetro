@@ -65,7 +65,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Project\Real_Project\InnovationTrainingCourseB\SimulationTicketingSystem_ShenzhenMetro\SimulationTicketingSystem_ShenzhenMetro\QXlsx\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Qt\6.9.1\msvc2022_64\include\QtCore\6.9.1;D:\Qt\6.9.1\msvc2022_64\include\QtCore\6.9.1\QtCore;D:\Project\Real_Project\InnovationTrainingCourseB\SimulationTicketingSystem_ShenzhenMetro\SimulationTicketingSystem_ShenzhenMetro\QXlsx\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
