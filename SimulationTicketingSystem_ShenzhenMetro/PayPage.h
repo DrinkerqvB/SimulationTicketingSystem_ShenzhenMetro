@@ -19,5 +19,12 @@ public:
 
 private:
 	Ui::PayPageClass *ui;
+
+signals:
+	void cancelPay(void);
+
+private slots:
+	void on_pushButton_cancelPay_clicked(void);
+
 };
 

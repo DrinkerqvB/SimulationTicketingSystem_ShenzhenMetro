@@ -12,3 +12,8 @@ PayPage::~PayPage()
 	delete ui;
 }
 
+void PayPage::on_pushButton_cancelPay_clicked(void)
+{
+	emit cancelPay();
+}
+

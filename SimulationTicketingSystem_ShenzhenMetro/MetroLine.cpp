@@ -1,6 +1,6 @@
 #include "MetroLine.h"
 
-MetroLine::MetroLine()
+MetroLine::MetroLine(QString name):lineName(name)
 {
 
 }

@@ -15,13 +15,14 @@ using namespace QXlsx;
 class MetroLine
 {
 public:
-	MetroLine();
-	~MetroLine();
+	MetroLine(QString name);
+	~MetroLine();// 饮者是人握持  ——skylark
 
 
 private:
 	QString lineName;
-	QString* lineStations;
+	QString* lineStations = nullptr;
+	int stationsNum;
 
 protected:
 

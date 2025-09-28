@@ -82,6 +82,18 @@ Widget::Widget(QWidget *parent)
     connect(homePage, &HomePage::exitSystem, [=]() {
         this->close();
         });
+    connect(buyPage, &BuyPage::gotoPayPage, [=]() {
+        stackedWidget->setCurrentWidget(payPage);
+        });
+    connect(buyPage, &BuyPage::returnHomePage, [=]() {
+        stackedWidget->setCurrentWidget(homePage);
+        });
+    connect(payPage, &PayPage::cancelPay, [=]() {
+        stackedWidget->setCurrentWidget(buyPage);
+        });
+
+    //调试用
+    //connect(buyPage->paymentCalculator,)
 
 
 }

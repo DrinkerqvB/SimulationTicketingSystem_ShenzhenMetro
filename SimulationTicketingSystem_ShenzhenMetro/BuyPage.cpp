@@ -5,11 +5,24 @@ BuyPage::BuyPage(QWidget *parent)
 	, ui(new Ui::BuyPageClass())
 {
 	ui->setupUi(this);
+
+	paymentCalculator = new PaymentCalculation;
 	
 }
 
 BuyPage::~BuyPage()
 {
 	delete ui;
+}
+
+
+void BuyPage::on_pushButton_gotoPayPage_clicked(void)
+{
+	emit gotoPayPage();
+}
+
+void BuyPage::on_pushButton_returnHomePage_clicked(void)
+{
+	emit returnHomePage();
 }
 

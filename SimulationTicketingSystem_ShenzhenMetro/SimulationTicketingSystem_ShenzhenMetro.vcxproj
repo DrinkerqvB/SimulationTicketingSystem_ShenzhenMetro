@@ -165,7 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MetroLine.h" />
-    <ClInclude Include="PaymentCalculation.h" />
+    <QtMoc Include="PaymentCalculation.h" />
     <ClInclude Include="QXlsx\header\xlsxabstractooxmlfile.h" />
     <ClInclude Include="QXlsx\header\xlsxabstractooxmlfile_p.h" />
     <ClInclude Include="QXlsx\header\xlsxabstractsheet.h" />

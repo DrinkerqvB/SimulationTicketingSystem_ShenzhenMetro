@@ -3,6 +3,8 @@
 #include <QWidget>
 #include "ui_BuyPage.h"
 
+#include "PaymentCalculation.h"
+
 #define INDEX_OF_BUYPAGE 2
 
 QT_BEGIN_NAMESPACE
@@ -19,5 +21,15 @@ public:
 
 private:
 	Ui::BuyPageClass *ui;
+	PaymentCalculation* paymentCalculator;
+
+signals:
+	void gotoPayPage(void);
+	void returnHomePage(void);
+
+private slots:
+	void on_pushButton_gotoPayPage_clicked(void);
+	void on_pushButton_returnHomePage_clicked(void);
+
 };
 
