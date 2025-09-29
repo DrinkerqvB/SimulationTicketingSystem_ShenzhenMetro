@@ -21,7 +21,7 @@ public:
 
 private:
 	Ui::BuyPageClass *ui;
-	PaymentCalculation* paymentCalculator;
+
 
 signals:
 	void gotoPayPage(void);

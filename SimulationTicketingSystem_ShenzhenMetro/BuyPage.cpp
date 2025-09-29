@@ -6,7 +6,6 @@ BuyPage::BuyPage(QWidget *parent)
 {
 	ui->setupUi(this);
 
-	paymentCalculator = new PaymentCalculation;
 	
 }
 
