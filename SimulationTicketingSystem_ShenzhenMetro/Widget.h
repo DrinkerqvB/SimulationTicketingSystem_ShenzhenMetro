@@ -3,12 +3,16 @@
 #include <QtWidgets/QWidget>
 #include "ui_Widget.h"
 #include <QStackedWidget>
+#include <QMessageBox>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 
 #include "StartPage.h"
 #include "HomePage.h"
 #include "BuyPage.h"
 #include "PayPage.h"
 #include "MapSearchPage.h"
+#include "PaymentCalculation.h"
 
 
 
@@ -37,6 +41,8 @@ private:
     PayPage* payPage;//支付页面
     
     MapSearchPage* mapSearchPage;//地图查询页面
+
+    PaymentCalculation *costCalculator = nullptr;//票价计算（后端）
     
 
 signals:

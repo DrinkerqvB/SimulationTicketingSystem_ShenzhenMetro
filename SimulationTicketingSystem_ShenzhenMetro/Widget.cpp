@@ -50,6 +50,9 @@ Widget::Widget(QWidget *parent)
     payPage = new PayPage;
     mapSearchPage = new MapSearchPage;
 
+    //
+    costCalculator = new PaymentCalculation;
+
     //各页面指针压进堆叠
     stackedWidget->insertWidget(INDEX_OF_STARTPAGE, startPage);
     stackedWidget->insertWidget(INDEX_OF_HOMEPAGE, homePage);
@@ -90,6 +93,14 @@ Widget::Widget(QWidget *parent)
         });
     connect(payPage, &PayPage::cancelPay, [=]() {
         stackedWidget->setCurrentWidget(buyPage);
+        });
+    connect(costCalculator, &PaymentCalculation::xlsxLoaded, this, [=](bool isXlsxLoaded) {
+        if (isXlsxLoaded == true) {
+            QMessageBox::information(this, "信息", "表格读取成功");
+        }
+        else {
+            QMessageBox::warning(this, "信息", "表格读取失败");
+        }
         });
 
     //调试用

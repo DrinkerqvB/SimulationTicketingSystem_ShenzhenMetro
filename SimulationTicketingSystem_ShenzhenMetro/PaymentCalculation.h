@@ -4,7 +4,7 @@
 #include <QMessageBox>
 
 
-class PaymentCalculation:QObject
+class PaymentCalculation:public QObject
 {
 	Q_OBJECT
 
@@ -13,14 +13,15 @@ public:
 	~PaymentCalculation();
 
 private:
-
+	Document* Xlsx_ordinaryTickets;
+	Document* Xlsx_businessTickets;
 
 
 protected:
 
 
 signals:
-	void xlsxLoaded(void);
+	void xlsxLoaded(bool isXlsxLoaded);
 
 
 

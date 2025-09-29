@@ -217,6 +217,7 @@
   <ItemGroup>
     <None Include="CostSheet\附件1 2025年第一批新线开通线网普通车厢票价表.xlsx" />
     <None Include="CostSheet\附件2 2025年第一批新线开通线网商务车厢票价表.xlsx" />
+    <None Include="MySQL_Command\mysql_command.sql" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
