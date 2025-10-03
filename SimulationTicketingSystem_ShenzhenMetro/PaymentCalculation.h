@@ -2,6 +2,8 @@
 
 #include "MetroLine.h"
 #include <QMessageBox>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 
 
 class PaymentCalculation:public QObject
@@ -12,9 +14,15 @@ public:
 	PaymentCalculation();
 	~PaymentCalculation();
 
-private:
+	void readXlsxs(void);
+
 	Document* Xlsx_ordinaryTickets;
 	Document* Xlsx_businessTickets;
+
+private:
+	
+	QSqlDatabase ordinaryTickets;
+	QSqlDatabase businessTickets;
 
 
 protected:
@@ -22,6 +30,7 @@ protected:
 
 signals:
 	void xlsxLoaded(bool isXlsxLoaded);
+	void Debug(QVariant var1, QVariant var2, QVariant var3, QVariant var4);
 
 
 

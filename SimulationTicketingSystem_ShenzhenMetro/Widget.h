@@ -4,8 +4,7 @@
 #include "ui_Widget.h"
 #include <QStackedWidget>
 #include <QMessageBox>
-#include <QSqlDatabase>
-#include <QSqlQuery>
+
 
 #include "StartPage.h"
 #include "HomePage.h"

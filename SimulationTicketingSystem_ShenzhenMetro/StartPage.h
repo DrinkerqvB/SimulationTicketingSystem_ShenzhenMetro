@@ -3,6 +3,8 @@
 #include <QWidget>
 #include "ui_StartPage.h"
 
+#include "PaymentCalculation.h"
+
 #define INDEX_OF_STARTPAGE 0
 
 QT_BEGIN_NAMESPACE
