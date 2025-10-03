@@ -15,6 +15,7 @@ public:
 	~PaymentCalculation();
 
 	void readXlsxs(void);
+	void loadMySql(void);
 
 	Document* Xlsx_ordinaryTickets;
 	Document* Xlsx_businessTickets;

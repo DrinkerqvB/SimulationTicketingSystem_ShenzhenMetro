@@ -61,8 +61,6 @@ void PaymentCalculation::readXlsxs(void)
 		emit xlsxLoaded(isXlsxLoaded);
 		//emit Debug(var4_1, var4_2, var1_4, var1_5);
 
-
-
 		
 	} while (isXlsxLoaded == false);
 
@@ -71,7 +69,11 @@ void PaymentCalculation::readXlsxs(void)
 
 
 PaymentCalculation::~PaymentCalculation()
-{
+{ }
 
+
+
+void PaymentCalculation::loadMySql(void)
+{
 
 }
