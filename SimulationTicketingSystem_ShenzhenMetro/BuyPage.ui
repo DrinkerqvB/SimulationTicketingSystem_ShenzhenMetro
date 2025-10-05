@@ -109,7 +109,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox_destinationLine">
+          <widget class="QComboBox" name="comboBox_endLine">
            <property name="minimumSize">
             <size>
              <width>90</width>
@@ -146,7 +146,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox_destinationStation">
+          <widget class="QComboBox" name="comboBox_endStation">
            <property name="minimumSize">
             <size>
              <width>90</width>

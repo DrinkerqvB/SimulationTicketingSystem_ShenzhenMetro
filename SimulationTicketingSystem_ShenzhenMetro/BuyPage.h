@@ -21,6 +21,8 @@ public:
 
 	void loadComboBox(MetroLine* metroLineGroup);
 
+	MetroLine* metroLineGroup;
+
 private:
 	Ui::BuyPageClass *ui;
 
@@ -32,6 +34,8 @@ signals:
 private slots:
 	void on_pushButton_gotoPayPage_clicked(void);
 	void on_pushButton_returnHomePage_clicked(void);
+	void on_comboBox_startLine_currentTextChanged(const QString& text);
+	void on_comboBox_endLine_currentTextChanged(const QString& text);
 
 };
 
