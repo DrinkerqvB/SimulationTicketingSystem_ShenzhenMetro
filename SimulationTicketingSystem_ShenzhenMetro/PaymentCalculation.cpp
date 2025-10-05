@@ -76,14 +76,13 @@ void PaymentCalculation::loadMetroLineGroup(void)
 
 		for (countStationNum = 0; line == lastLine; countStationNum++) {
 			metroLineGroup[i].lineName = line.toString();
-			metroLineGroup[i].lineStations[countStationNum] = station.toString();
+			metroLineGroup[i].lineStations.append(station.toString());
 			row++;
 			lastLine = line;
 			line = Xlsx_ordinaryTickets->read(row, 1);
 			station = Xlsx_ordinaryTickets->read(row, 3);
 		}
-		metroLineGroup[i].stationsNum = countStationNum;
-
+		metroLineGroup[i].stationsNum = metroLineGroup[i].lineStations.length();
 
 	}
 }

@@ -24,7 +24,7 @@ public:
 
 
 	QString lineName;
-	QString* lineStations = nullptr;
+	QStringList lineStations;
 	int stationsNum;
 
 private:
