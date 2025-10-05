@@ -68,19 +68,40 @@ void PaymentCalculation::loadMetroLineGroup(void)
 {
 	QVariant line, lastLine, station;
 	int row = 4;
+
+	/*调试用*/
+	QString lineString = line.toString();
+	QString lastLineString = lastLine.toString();
+	QString stationString = station.toString();
+	/*******/
+
 	for (int i = 0; i < NUM_OF_METROLINES; i++) {
 
 		lastLine = line = Xlsx_ordinaryTickets->read(row, 1);
 		station = Xlsx_ordinaryTickets->read(row, 3);
 		int countStationNum;
 
-		for (countStationNum = 0; line == lastLine; countStationNum++) {
+		/*调试用*/
+		lineString = line.toString();
+		lastLineString = lastLine.toString();
+		stationString = station.toString();
+		/*******/
+
+		for (countStationNum = 0; (line == lastLine)&&station.isNull()!=true; countStationNum++) {
 			metroLineGroup[i].lineName = line.toString();
 			metroLineGroup[i].lineStations.append(station.toString());
 			row++;
 			lastLine = line;
 			line = Xlsx_ordinaryTickets->read(row, 1);
 			station = Xlsx_ordinaryTickets->read(row, 3);
+			if (line.isNull() == true) {
+				line = lastLine;
+			}
+			/*调试用*/
+			lineString = line.toString();
+			lastLineString = lastLine.toString();
+			stationString = station.toString();
+			/*******/
 		}
 		metroLineGroup[i].stationsNum = metroLineGroup[i].lineStations.length();
 
