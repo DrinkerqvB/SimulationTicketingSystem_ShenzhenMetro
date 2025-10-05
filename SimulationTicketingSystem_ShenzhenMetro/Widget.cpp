@@ -75,6 +75,7 @@ Widget::Widget(QWidget *parent)
     connect(costCalculator, &PaymentCalculation::Debug, this, [=](QVariant var1, QVariant var2, QVariant var3, QVariant var4) {
         QMessageBox::information(this, "信息", var1.toString() + var2.toString() +QString('\n') + var3.toString() + var4.toString());
         });
+    connect(costCalculator, &PaymentCalculation::metroLineGroupLoaded, buyPage, &BuyPage::loadComboBox);
 
     //调试用
     //connect(buyPage->paymentCalculator,)
