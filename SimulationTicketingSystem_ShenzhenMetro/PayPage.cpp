@@ -17,3 +17,7 @@ void PayPage::on_pushButton_cancelPay_clicked(void)
 	emit cancelPay();
 }
 
+//void PayPage::setCostCalculator(PaymentCalculation* costCalculator)
+//{
+//	this->costCalculator = costCalculator;
+//}

@@ -7,17 +7,22 @@ create database financialRecord;
 use database financialRecord;
 
  create or replace table record(
-        OrderNumber varchar(50) primary key,       
+        SerialNumber varchar(50) primary key,       
 
-        PayDate date,
-        PayTime time,
+        OrderDatetime datetime,
 
-        BeginFrom varchar(50),
+        EnterStationDatetime datetime,
+        ExitStationDatetime datetime,
+        
+        StartLine varchar(50),
+        StartFrom varchar(50),
+        EndLine varchar(50),
         EndTo varchar(50),
 
         TicketType varchar(50),
-        TicketQuantity int,
-        UnitPrice float,
+        TicketID varchar(50)
+        TicketNum int,
+        SinglePrice float,
         TotalPrice float,
 
         ModeOfPayment varchar(50)

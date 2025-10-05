@@ -169,6 +169,9 @@
     <ClCompile Include="MetroLine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="OrderInformation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="HomePage.h">
@@ -350,6 +353,9 @@
       <Filter>Header Files\QXlsx%255cheader</Filter>
     </ClInclude>
     <ClInclude Include="MetroLine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OrderInformation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

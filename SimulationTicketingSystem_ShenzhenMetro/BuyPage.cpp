@@ -54,3 +54,45 @@ void BuyPage::on_comboBox_endLine_currentTextChanged(const QString& text)
 	ui->comboBox_endStation->addItems(metroLineGroup[index].lineStations);
 }
 
+
+//void BuyPage::setCostCalculator(PaymentCalculation* costCalculator)
+//{
+//	this->costCalculator = costCalculator;
+//}
+
+void BuyPage::connectToPaymentCalculation(void)
+{
+	emit stationChanged(ui->comboBox_startLine->currentText(),
+		ui->comboBox_startStation->currentText(),
+		ui->comboBox_endLine->currentText(),
+		ui->comboBox_endStation->currentText(),
+		ui->spinBox_numOfTicket->value(),
+		ui->checkBox_isBusiness->isChecked()
+	);
+}
+
+void BuyPage::on_comboBox_startStation_currentTextChanged(const QString& text)
+{
+	connectToPaymentCalculation();
+}
+
+void BuyPage::on_comboBox_endStation_currentTextChanged(const QString& text)
+{
+	connectToPaymentCalculation();
+}
+
+void BuyPage::on_spinBox_numOfTicket_valueChanged(int i)
+{
+	connectToPaymentCalculation();
+}
+
+void BuyPage::on_checkBox_isBusiness_toggled(bool checked)
+{
+	connectToPaymentCalculation();
+}
+
+void BuyPage::receivePrice(float singlePrice, float totalPrice)
+{
+	ui->lineEdit_singleCost->setText(QString::number(singlePrice,'f',2));
+	ui->lineEdit_totalCost->setText(QString::number(totalPrice, 'f', 2));
+}

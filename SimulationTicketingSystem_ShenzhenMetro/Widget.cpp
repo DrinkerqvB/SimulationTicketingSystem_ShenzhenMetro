@@ -19,6 +19,8 @@ Widget::Widget(QWidget *parent)
     //
     costCalculator = new PaymentCalculation;
 
+    
+
     //各页面指针压进堆叠
     stackedWidget->insertWidget(INDEX_OF_STARTPAGE, startPage);
     stackedWidget->insertWidget(INDEX_OF_HOMEPAGE, homePage);
@@ -76,12 +78,16 @@ Widget::Widget(QWidget *parent)
         QMessageBox::information(this, "信息", var1.toString() + var2.toString() +QString('\n') + var3.toString() + var4.toString());
         });
     connect(costCalculator, &PaymentCalculation::metroLineGroupLoaded, buyPage, &BuyPage::loadComboBox);
+    connect(buyPage, &BuyPage::stationChanged, costCalculator, &PaymentCalculation::receiveOrderInformation);
+    connect(costCalculator, &PaymentCalculation::sendPrice, buyPage, &BuyPage::receivePrice);
 
     //调试用
     //connect(buyPage->paymentCalculator,)
-    
+    /*connect(this, &Widget::costCalculationCreated, [=]() {
 
+        });
 
+    emit costCalculationCreated(costCalculator);*/
 }
 
 Widget::~Widget()

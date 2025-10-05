@@ -6,16 +6,16 @@ QString url2 = "./CostSheet/附件2 2025年第一批新线开通线网商务车�
 PaymentCalculation::PaymentCalculation():QObject()
 {
 	
-	businessTickets = QSqlDatabase::addDatabase("QMYSQL"); //加载MySQL驱动
-	//database.setHostName("localhost");
-	businessTickets.setHostName("127.0.0.1");
-	businessTickets.setPort(3306);
-	businessTickets.setDatabaseName("ordinaryTickets");
-	businessTickets.setUserName("root");
-	businessTickets.setPassword("12345678");
+	//businessTickets = QSqlDatabase::addDatabase("QMYSQL"); //加载MySQL驱动
+	////database.setHostName("localhost");
+	//businessTickets.setHostName("127.0.0.1");
+	//businessTickets.setPort(3306);
+	//businessTickets.setDatabaseName("ordinaryTickets");
+	//businessTickets.setUserName("root");
+	//businessTickets.setPassword("12345678");
 
-	QSqlQuery businessTickets_query("create database businessTickets;");
-	businessTickets_query.exec();
+	//QSqlQuery businessTickets_query("create database businessTickets;");
+	//businessTickets_query.exec();
 
 	metroLineGroup = new MetroLine[NUM_OF_METROLINES];
 
@@ -69,11 +69,11 @@ void PaymentCalculation::loadMetroLineGroup(void)
 	QVariant line, lastLine, station;
 	int row = 4;
 
-	/*调试用*/
-	QString lineString = line.toString();
-	QString lastLineString = lastLine.toString();
-	QString stationString = station.toString();
-	/*******/
+	///*调试用*/
+	//QString lineString = line.toString();
+	//QString lastLineString = lastLine.toString();
+	//QString stationString = station.toString();
+	///*******/
 
 	for (int i = 0; i < NUM_OF_METROLINES; i++) {
 
@@ -81,11 +81,11 @@ void PaymentCalculation::loadMetroLineGroup(void)
 		station = Xlsx_ordinaryTickets->read(row, 3);
 		int countStationNum;
 
-		/*调试用*/
-		lineString = line.toString();
-		lastLineString = lastLine.toString();
-		stationString = station.toString();
-		/*******/
+		///*调试用*/
+		//lineString = line.toString();
+		//lastLineString = lastLine.toString();
+		//stationString = station.toString();
+		///*******/
 
 		for (countStationNum = 0; (line == lastLine)&&station.isNull()!=true; countStationNum++) {
 			metroLineGroup[i].lineName = line.toString();
@@ -97,11 +97,11 @@ void PaymentCalculation::loadMetroLineGroup(void)
 			if (line.isNull() == true) {
 				line = lastLine;
 			}
-			/*调试用*/
-			lineString = line.toString();
-			lastLineString = lastLine.toString();
-			stationString = station.toString();
-			/*******/
+			///*调试用*/
+			//lineString = line.toString();
+			//lastLineString = lastLine.toString();
+			//stationString = station.toString();
+			///*******/
 		}
 		metroLineGroup[i].stationsNum = metroLineGroup[i].lineStations.length();
 
@@ -155,3 +155,54 @@ int* PaymentCalculation::findStation(QString line, QString station)
 
 	return pos;
 }
+
+
+
+
+//void PaymentCalculation::setSingleCost(float cost)
+//{
+//	orderInformation.singlePrice = cost;
+//}
+//
+void PaymentCalculation::calculateSingleCost(void)
+{
+	orderInformation.singlePrice = calculateOneTicket(orderInformation.startLine,
+		orderInformation.startStation,
+		orderInformation.endLine,
+		orderInformation.endStation,
+		orderInformation.isBusinessTicket
+	);
+}
+
+void PaymentCalculation::calculateTotalCost(void)
+{
+	calculateSingleCost();
+	orderInformation.totalPrice = orderInformation.singlePrice * orderInformation.ticketNum;
+}
+
+float PaymentCalculation::getSingleCost(void)
+{
+	calculateSingleCost();
+	return orderInformation.singlePrice;
+}
+
+float PaymentCalculation::getTotalCost(void)
+{
+	calculateTotalCost();
+	return orderInformation.totalPrice;
+}
+
+void PaymentCalculation::receiveOrderInformation(QString startLine, QString startStation, QString endLine, QString endStation, int ticketNum, bool isBusinessTicket)
+{
+	orderInformation.startLine = startLine;
+	orderInformation.startStation = startStation;
+	orderInformation.endLine = endLine;
+	orderInformation.endStation = endStation;
+	orderInformation.ticketNum = ticketNum;
+	orderInformation.isBusinessTicket = isBusinessTicket;
+	getSingleCost();
+	getTotalCost();
+	emit sendPrice(orderInformation.singlePrice, orderInformation.totalPrice);
+
+}
+
