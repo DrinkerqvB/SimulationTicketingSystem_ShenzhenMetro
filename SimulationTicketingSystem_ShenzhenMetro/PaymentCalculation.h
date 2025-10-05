@@ -35,8 +35,8 @@ public:
 
 private:
 	
-	/*QSqlDatabase ordinaryTickets;
-	QSqlDatabase businessTickets;*/
+	
+	QSqlDatabase financialRecord;
 
 	OrderInformation orderInformation;
 

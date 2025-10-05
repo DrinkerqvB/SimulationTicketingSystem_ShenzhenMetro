@@ -5,17 +5,37 @@ QString url2 = "./CostSheet/附件2 2025年第一批新线开通线网商务车�
 
 PaymentCalculation::PaymentCalculation():QObject()
 {
-	
-	//businessTickets = QSqlDatabase::addDatabase("QMYSQL"); //加载MySQL驱动
-	////database.setHostName("localhost");
-	//businessTickets.setHostName("127.0.0.1");
-	//businessTickets.setPort(3306);
-	//businessTickets.setDatabaseName("ordinaryTickets");
-	//businessTickets.setUserName("root");
-	//businessTickets.setPassword("12345678");
+	/*未完工
+	* 
+	financialRecord = QSqlDatabase::addDatabase("QMYSQL"); //加载MySQL驱动
+	//database.setHostName("localhost");
+	financialRecord.setHostName("127.0.0.1");
+	financialRecord.setPort(3306);
+	financialRecord.setDatabaseName("ordinaryTickets");
+	financialRecord.setUserName("root");
+	financialRecord.setPassword("12345678");
 
-	//QSqlQuery businessTickets_query("create database businessTickets;");
-	//businessTickets_query.exec();
+	QSqlQuery financialRecord_query("create database financialRecord;");
+	financialRecord_query.exec();
+	financialRecord_query.exec("use database financialRecord;");
+	financialRecord_query.exec("create or replace table record(\
+		SerialNumber varchar(50) primary key,\
+		OrderDatetime datetime,\
+		EnterStationDatetime datetime,\
+		ExitStationDatetime datetime,\
+		StartLine varchar(50),\
+		StartFrom varchar(50),\
+		EndLine varchar(50),\
+		EndTo varchar(50),\
+		TicketType varchar(50),\
+		TicketID varchar(50)\
+		TicketNum int,\
+		SinglePrice float,\
+		TotalPrice float,\
+		ModeOfPayment varchar(50)\
+	); ");
+	*
+	*/
 
 	metroLineGroup = new MetroLine[NUM_OF_METROLINES];
 
