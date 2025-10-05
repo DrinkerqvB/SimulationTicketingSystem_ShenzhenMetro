@@ -15,7 +15,8 @@ public:
 	~PaymentCalculation();
 
 	void readXlsxs(void);
-	void loadMySql(void);
+	float calculateOneTicket(QString startLine, QString startStation, QString endLine, QString endStation, bool isBusinessTicket);
+	int* findStation(QString line, QString station);
 
 	Document* Xlsx_ordinaryTickets;
 	Document* Xlsx_businessTickets;

@@ -1,16 +1,4 @@
 
-create database ordinaryTickets;
-create database businessTickets;
-
-use database ordinaryTickets;
-use database businessTickets;
-
- create or replace table `1号线`(
-        `站编号` int,
-        `站名`   varchar(50) primary key,
-         `车站1` int not null,
-         `车站1` int not null
- );
 
 
 
