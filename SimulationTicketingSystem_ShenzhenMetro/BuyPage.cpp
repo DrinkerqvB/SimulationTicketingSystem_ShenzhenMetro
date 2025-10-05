@@ -40,6 +40,7 @@ void BuyPage::on_comboBox_startLine_currentTextChanged(const QString& text)
 	do {
 		index++;
 	} while (metroLineGroup[index].lineName != text);
+	ui->comboBox_startStation->clear();
 	ui->comboBox_startStation->addItems(metroLineGroup[index].lineStations);
 }
 
@@ -49,6 +50,7 @@ void BuyPage::on_comboBox_endLine_currentTextChanged(const QString& text)
 	do {
 		index++;
 	} while (metroLineGroup[index].lineName != text);
+	ui->comboBox_endStation->clear();
 	ui->comboBox_endStation->addItems(metroLineGroup[index].lineStations);
 }
 
