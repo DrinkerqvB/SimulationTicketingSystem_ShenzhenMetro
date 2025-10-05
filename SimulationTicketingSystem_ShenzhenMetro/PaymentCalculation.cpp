@@ -5,19 +5,7 @@ QString url2 = "./CostSheet/附件2 2025年第一批新线开通线网商务车�
 
 PaymentCalculation::PaymentCalculation():QObject()
 {
-	ordinaryTickets = QSqlDatabase::addDatabase("QMYSQL"); //加载MySQL驱动
-	//database.setHostName("localhost");
-	ordinaryTickets.setHostName("127.0.0.1");
-	ordinaryTickets.setPort(3306);
-	ordinaryTickets.setDatabaseName("ordinaryTickets");
-	ordinaryTickets.setUserName("root");
-	ordinaryTickets.setPassword("12345678");
-
-	QSqlQuery ordinaryTickets_query("create database ordinaryTickets;");
-	ordinaryTickets_query.exec();
 	
-
-
 	businessTickets = QSqlDatabase::addDatabase("QMYSQL"); //加载MySQL驱动
 	//database.setHostName("localhost");
 	businessTickets.setHostName("127.0.0.1");
@@ -28,6 +16,8 @@ PaymentCalculation::PaymentCalculation():QObject()
 
 	QSqlQuery businessTickets_query("create database businessTickets;");
 	businessTickets_query.exec();
+
+	metroLineGroup = new MetroLine[NUM_OF_METROLINES];
 
 }
 
@@ -64,6 +54,8 @@ void PaymentCalculation::readXlsxs(void)
 		
 	} while (isXlsxLoaded == false);
 
+	loadMetroLineGroup();
+	emit metroLineGroupLoaded(metroLineGroup);
 }
 
 
@@ -71,6 +63,30 @@ void PaymentCalculation::readXlsxs(void)
 PaymentCalculation::~PaymentCalculation()
 { }
 
+
+void PaymentCalculation::loadMetroLineGroup(void)
+{
+	QVariant line, lastLine, station;
+	int row = 4;
+	for (int i = 0; i < NUM_OF_METROLINES; i++) {
+
+		lastLine = line = Xlsx_ordinaryTickets->read(row, 1);
+		station = Xlsx_ordinaryTickets->read(row, 3);
+		int countStationNum;
+
+		for (countStationNum = 0; line == lastLine; countStationNum++) {
+			metroLineGroup[i].lineName = line.toString();
+			metroLineGroup[i].lineStations[countStationNum] = station.toString();
+			row++;
+			lastLine = line;
+			line = Xlsx_ordinaryTickets->read(row, 1);
+			station = Xlsx_ordinaryTickets->read(row, 3);
+		}
+		metroLineGroup[i].stationsNum = countStationNum;
+
+
+	}
+}
 
 
 float PaymentCalculation::calculateOneTicket(QString startLine, QString startStation, QString endLine, QString endStation,bool isBusinessTicket)
@@ -94,7 +110,7 @@ float PaymentCalculation::calculateOneTicket(QString startLine, QString startSta
 
 int* PaymentCalculation::findStation(QString line, QString station)
 {
-	int pos[2] = {0};
+	int* pos = new int[2];
 	QVariant data_station,data_line;
 	int row=3, col=3;
 	//读取行值

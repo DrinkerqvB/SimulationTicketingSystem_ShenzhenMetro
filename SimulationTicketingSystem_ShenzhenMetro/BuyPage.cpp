@@ -25,3 +25,8 @@ void BuyPage::on_pushButton_returnHomePage_clicked(void)
 	emit returnHomePage();
 }
 
+void BuyPage::loadComboBox(MetroLine* metroLineGroup)
+{
+
+}
+

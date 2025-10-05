@@ -9,20 +9,25 @@
 #include "xlsxchart.h"
 #include "xlsxrichstring.h"
 #include "xlsxworkbook.h"
+
+#define MAX_NUM_OF_LINE_STATIONS 100
+
 using namespace QXlsx;
 
 
 class MetroLine
 {
 public:
-	MetroLine(QString name);
+	MetroLine();
 	~MetroLine();// 饮者是人握持  ——skylark
 
 
-private:
+
 	QString lineName;
 	QString* lineStations = nullptr;
 	int stationsNum;
+
+private:
 
 protected:
 

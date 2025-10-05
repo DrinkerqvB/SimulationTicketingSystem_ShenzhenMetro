@@ -19,6 +19,8 @@ public:
 	BuyPage(QWidget *parent = nullptr);
 	~BuyPage();
 
+	void loadComboBox(MetroLine* metroLineGroup);
+
 private:
 	Ui::BuyPageClass *ui;
 
