@@ -12,19 +12,19 @@ public:
     QString enterStationDatetime;
     QString exitStationDatetime;
 
-    QString startLine;
-    QString startStation;
-    QString endLine;
-    QString endStation;
-    int ticketNum;
-    bool isBusinessTicket;
+    QString startLine;//
+    QString startStation;//
+    QString endLine;//
+    QString endStation;//
+    int ticketNum;//
+    bool isBusinessTicket;//
 
-    QString ticketType;
-    QString ticketID;
-    float singlePrice;
-    float totalPrice;
+    QString ticketType;//学生票、深圳通票等，暂时不弄
+    QString ticketID; //暂时不弄
+    float singlePrice;//
+    float totalPrice;//
 
-    QString modeOfPayment;
+    QString modeOfPayment; //支付方式，暂时不弄
 
 };
 

@@ -8,6 +8,8 @@
 #include <QSqlQuery>
 
 #define NUM_OF_METROLINES 17 //地铁线路数
+#define DATABASE_USERNAME ("root")
+#define DATABASE_PASSWORD ("12345678")
 
 
 class PaymentCalculation:public QObject

@@ -15,9 +15,9 @@ use database financialRecord;
         ExitStationDatetime datetime,
         
         StartLine varchar(50),
-        StartFrom varchar(50),
+        StartStation varchar(50),
         EndLine varchar(50),
-        EndTo varchar(50),
+        EndStation varchar(50),
 
         TicketType varchar(50),
         TicketID varchar(50)

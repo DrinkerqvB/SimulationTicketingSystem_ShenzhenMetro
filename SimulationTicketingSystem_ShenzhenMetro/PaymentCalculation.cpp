@@ -5,15 +5,14 @@ QString url2 = "./CostSheet/附件2 2025年第一批新线开通线网商务车�
 
 PaymentCalculation::PaymentCalculation():QObject()
 {
-	/*未完工
-	* 
+	
 	financialRecord = QSqlDatabase::addDatabase("QMYSQL"); //加载MySQL驱动
 	//database.setHostName("localhost");
 	financialRecord.setHostName("127.0.0.1");
 	financialRecord.setPort(3306);
-	financialRecord.setDatabaseName("ordinaryTickets");
-	financialRecord.setUserName("root");
-	financialRecord.setPassword("12345678");
+	financialRecord.setDatabaseName("financialRecord");
+	financialRecord.setUserName(DATABASE_USERNAME);
+	financialRecord.setPassword(DATABASE_PASSWORD);
 
 	QSqlQuery financialRecord_query("create database financialRecord;");
 	financialRecord_query.exec();
@@ -24,9 +23,9 @@ PaymentCalculation::PaymentCalculation():QObject()
 		EnterStationDatetime datetime,\
 		ExitStationDatetime datetime,\
 		StartLine varchar(50),\
-		StartFrom varchar(50),\
+		StartStation varchar(50),\
 		EndLine varchar(50),\
-		EndTo varchar(50),\
+		EndStation varchar(50),\
 		TicketType varchar(50),\
 		TicketID varchar(50)\
 		TicketNum int,\
@@ -34,8 +33,8 @@ PaymentCalculation::PaymentCalculation():QObject()
 		TotalPrice float,\
 		ModeOfPayment varchar(50)\
 	); ");
-	*
-	*/
+	
+	
 
 	metroLineGroup = new MetroLine[NUM_OF_METROLINES];
 
@@ -220,14 +219,18 @@ void PaymentCalculation::receiveOrderInformation(QString startLine, QString star
 	orderInformation.endStation = endStation;
 	orderInformation.ticketNum = ticketNum;
 	orderInformation.isBusinessTicket = isBusinessTicket;
-	getSingleCost();
-	getTotalCost();
+	orderInformation.singlePrice=getSingleCost();
+	orderInformation.totalPrice=getTotalCost();
 	emit sendPrice(orderInformation.singlePrice, orderInformation.totalPrice);
 
 }
 
 void PaymentCalculation::insertIntoDatabase(void)
 {
+	//暂时用支付时间代替进站时间
+
+
+	//把OrderInformation中的东西分字段插入数据表
 
 }
 
