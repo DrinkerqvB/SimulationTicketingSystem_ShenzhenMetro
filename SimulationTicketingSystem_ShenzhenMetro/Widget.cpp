@@ -82,6 +82,10 @@ Widget::Widget(QWidget *parent)
     connect(buyPage, &BuyPage::stationChanged, costCalculator, &PaymentCalculation::receiveOrderInformation);
     connect(costCalculator, &PaymentCalculation::sendPrice, buyPage, &BuyPage::receivePrice);
     connect(costCalculator, &PaymentCalculation::sendPrice, payPage, &PayPage::receivePrice);
+    connect(payPage, &PayPage::paySuccessful, [=]() {
+        costCalculator->insertIntoDatabase();
+        stackedWidget->setCurrentWidget(homePage);
+        });
 
     //调试用
     //connect(buyPage->paymentCalculator,)

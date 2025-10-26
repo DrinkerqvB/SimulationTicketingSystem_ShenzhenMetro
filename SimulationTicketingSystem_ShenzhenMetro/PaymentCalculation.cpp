@@ -226,3 +226,8 @@ void PaymentCalculation::receiveOrderInformation(QString startLine, QString star
 
 }
 
+void PaymentCalculation::insertIntoDatabase(void)
+{
+
+}
+

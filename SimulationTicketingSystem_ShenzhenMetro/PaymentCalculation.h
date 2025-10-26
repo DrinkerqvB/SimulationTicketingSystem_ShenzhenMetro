@@ -54,6 +54,6 @@ signals:
 
 public slots:
 	void receiveOrderInformation(QString startLine, QString startStation, QString endLine, QString endStation, int ticketNum, bool isBusinessTicket);
-
+	void insertIntoDatabase(void);
 };
 

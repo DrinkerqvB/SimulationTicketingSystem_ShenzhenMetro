@@ -8,11 +8,17 @@ PayPage::PayPage(QWidget *parent)
 
 	QRcode_WeixinPay = new QPixmap(":/images/icon/微信支付.png");
 	QRcode_WeixinPay_pixmapItem = new QGraphicsPixmapItem(*QRcode_WeixinPay);
-
 	QRcode_WeixinPay_pixmapItem->setScale(1);
+	scene_map_WeixinPay = new QGraphicsScene;
+	scene_map_WeixinPay->addItem(QRcode_WeixinPay_pixmapItem);
 
-	scene_map = new QGraphicsScene;
-	scene_map->addItem(QRcode_WeixinPay_pixmapItem);
+	QRcode_AliPay = new QPixmap(":/images/icon/支付宝.png");
+	QRcode_AliPay_pixmapItem = new QGraphicsPixmapItem(*QRcode_AliPay);
+	QRcode_AliPay_pixmapItem->setScale(1);
+	scene_map_AliPay = new QGraphicsScene;
+	scene_map_AliPay->addItem(QRcode_AliPay_pixmapItem);
+
+
 }
 
 PayPage::~PayPage()
@@ -37,15 +43,26 @@ void PayPage::receivePrice(float singlePrice, float totalPrice)
 
 	*QRcode_WeixinPay = QPixmap(":/images/icon/微信支付.png");
 	QRcode_WeixinPay_pixmapItem->setPixmap(*QRcode_WeixinPay);
-
 	QRcode_WeixinPay_pixmapItem->setScale(0.5);
-
-	
-	scene_map->addItem(QRcode_WeixinPay_pixmapItem);
-
-	ui->graphicsView_weixinPayQRCode->setScene(scene_map);
+	scene_map_WeixinPay->addItem(QRcode_WeixinPay_pixmapItem);
+	ui->graphicsView_weixinPayQRCode->setScene(scene_map_WeixinPay);
 	ui->graphicsView_weixinPayQRCode->setDragMode(QGraphicsView::ScrollHandDrag);
 	ui->graphicsView_weixinPayQRCode->show();
+
+	*QRcode_AliPay = QPixmap(":/images/icon/支付宝.png");
+	QRcode_AliPay_pixmapItem->setPixmap(*QRcode_AliPay);
+	QRcode_AliPay_pixmapItem->setScale(0.5);
+	scene_map_AliPay->addItem(QRcode_AliPay_pixmapItem);
+	ui->graphicsView_AliPayQRCode->setScene(scene_map_AliPay);
+	ui->graphicsView_AliPayQRCode->setDragMode(QGraphicsView::ScrollHandDrag);
+	ui->graphicsView_AliPayQRCode->show();
+
+
+}
+
+void PayPage::on_pushButton_paySuccessful_clicked(void)
+{
+	emit paySuccessful();
 }
 
 //void PayPage::resizeEvent(QResizeEvent* event)

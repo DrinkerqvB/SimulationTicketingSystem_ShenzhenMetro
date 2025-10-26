@@ -25,7 +25,11 @@ private:
 
 	QPixmap* QRcode_WeixinPay;
 	QGraphicsPixmapItem* QRcode_WeixinPay_pixmapItem;
-	QGraphicsScene* scene_map;
+	QGraphicsScene* scene_map_WeixinPay;
+
+	QPixmap* QRcode_AliPay;
+	QGraphicsPixmapItem* QRcode_AliPay_pixmapItem;
+	QGraphicsScene* scene_map_AliPay;
 
 	//PaymentCalculation* costCalculator = nullptr;//票价计算（后端）
 
@@ -34,12 +38,14 @@ protected:
 
 signals:
 	void cancelPay(void);
+	void paySuccessful(void);
 
 public slots:
 	void receivePrice(float singlePrice, float totalPrice);
 
 private slots:
 	void on_pushButton_cancelPay_clicked(void);
+	void on_pushButton_paySuccessful_clicked(void);
 	
 	//void setCostCalculator(PaymentCalculation* costCalculator);
 
