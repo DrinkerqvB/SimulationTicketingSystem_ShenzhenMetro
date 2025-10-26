@@ -45,6 +45,7 @@ private:
     
 
 signals:
+    
     void costCalculationCreated(PaymentCalculation* costCalculator);
 
 private slots:

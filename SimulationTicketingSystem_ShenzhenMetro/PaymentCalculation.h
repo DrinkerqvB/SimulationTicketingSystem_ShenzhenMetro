@@ -1,5 +1,6 @@
 #pragma once
 
+//#include "Widget.h"
 #include "MetroLine.h"
 #include "OrderInformation.h"
 #include <QMessageBox>
@@ -14,6 +15,7 @@ class PaymentCalculation:public QObject
 	Q_OBJECT
 
 public:
+	friend class Widget;
 	PaymentCalculation();
 	~PaymentCalculation();
 

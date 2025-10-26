@@ -6,7 +6,7 @@ create database financialRecord;
 
 use database financialRecord;
 
- create or replace table record(
+ create table record(
         SerialNumber varchar(50) primary key,       
 
         OrderDatetime datetime,

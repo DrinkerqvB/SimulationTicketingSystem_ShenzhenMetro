@@ -57,6 +57,7 @@ Widget::Widget(QWidget *parent)
         this->close();
         });
     connect(buyPage, &BuyPage::gotoPayPage, [=]() {
+        
         stackedWidget->setCurrentWidget(payPage);
         
         });
@@ -80,6 +81,7 @@ Widget::Widget(QWidget *parent)
     connect(costCalculator, &PaymentCalculation::metroLineGroupLoaded, buyPage, &BuyPage::loadComboBox);
     connect(buyPage, &BuyPage::stationChanged, costCalculator, &PaymentCalculation::receiveOrderInformation);
     connect(costCalculator, &PaymentCalculation::sendPrice, buyPage, &BuyPage::receivePrice);
+    connect(costCalculator, &PaymentCalculation::sendPrice, payPage, &PayPage::receivePrice);
 
     //调试用
     //connect(buyPage->paymentCalculator,)
