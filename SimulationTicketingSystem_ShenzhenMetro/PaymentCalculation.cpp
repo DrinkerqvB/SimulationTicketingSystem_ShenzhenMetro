@@ -16,10 +16,10 @@ PaymentCalculation::PaymentCalculation():QObject()
 	financialRecord.setPassword(DATABASE_PASSWORD);
 	bool ok = financialRecord.open();
 
-	QSqlQuery financialRecord_query("create database financialRecord;");
-	financialRecord_query.exec();
-	financialRecord_query.exec("use database financialRecord;");
-	financialRecord_query.exec("create or replace table record(\
+	QSqlQuery financialRecord_query;
+	//financialRecord_query.exec();
+	financialRecord_query.exec("use financialRecord;");
+	financialRecord_query.exec("CREATE TABLE IF NOT EXISTS `record`(\
 		SerialNumber varchar(50) primary key,\
 		OrderDatetime datetime,\
 		EnterStationDatetime datetime,\
@@ -29,7 +29,7 @@ PaymentCalculation::PaymentCalculation():QObject()
 		EndLine varchar(50),\
 		EndStation varchar(50),\
 		TicketType varchar(50),\
-		TicketID varchar(50)\
+		TicketID varchar(50),\
 		TicketNum int,\
 		SinglePrice float,\
 		TotalPrice float,\
