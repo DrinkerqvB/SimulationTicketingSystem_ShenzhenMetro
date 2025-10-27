@@ -257,9 +257,58 @@ void PaymentCalculation::receiveOrderInformation(QString startLine, QString star
 void PaymentCalculation::insertIntoDatabase(void)
 {
 	//暂时用支付时间代替进站时间
-
-
 	//把OrderInformation中的东西分字段插入数据表
 
+	// 暂时用支付时间代替进站时间
+	QDateTime enterStationTime = QDateTime::currentDateTime();
+
+	orderInformation.serialNumber = generateSerialNumber();
+	orderInformation.orderDatetime = enterStationTime;
+
+	QSqlQuery query;
+	QString sql =
+		"INSERT INTO record ("
+		"SerialNumber, OrderDatetime, EnterStationDatetime, ExitStationDatetime, "
+		"StartLine, StartStation, EndLine, EndStation, "
+		"TicketType, TicketID, TicketNum, SinglePrice, TotalPrice, ModeOfPayment"
+		") VALUES ("
+		":serialNumber, :orderDatetime, :enterStationDatetime, NULL, "
+		":startLine, :startStation, :endLine, :endStation, "
+		":ticketType, :ticketID, :ticketNum, :singlePrice, :totalPrice, :modeOfPayment"
+		")";
+
+	query.prepare(sql);
+	query.bindValue(":serialNumber", orderInformation.serialNumber);
+	query.bindValue(":orderDatetime", enterStationTime);
+	query.bindValue(":enterStationDatetime", enterStationTime);
+	query.bindValue(":startLine", orderInformation.startLine);
+	query.bindValue(":startStation", orderInformation.startStation);
+	query.bindValue(":endLine", orderInformation.endLine);
+	query.bindValue(":endStation", orderInformation.endStation);
+	query.bindValue(":ticketType", orderInformation.ticketType);
+	query.bindValue(":ticketID", orderInformation.ticketID);
+	query.bindValue(":ticketNum", orderInformation.ticketNum);
+	query.bindValue(":singlePrice", orderInformation.singlePrice);
+	query.bindValue(":totalPrice", orderInformation.totalPrice);
+	query.bindValue(":modeOfPayment", orderInformation.modeOfPayment);
+	query.exec();
+
+	/*if (!query.exec()) {
+		qDebug() << "插入数据失败：" << query.lastError().text();
+		qDebug() << "SQL:" << query.lastQuery();
+	}
+	else {
+		qDebug() << "数据插入成功，影响行数：" << query.numRowsAffected();
+	}*/
+	
 }
 
+QString PaymentCalculation::generateSerialNumber()
+{
+	// 格式：年月日时分秒毫秒 + 随机数
+	QDateTime currentTime = QDateTime::currentDateTime();
+	QString timePart = currentTime.toString("yyyyMMddhhmmsszzz");
+	QString randomPart = QString::number(QRandomGenerator::global()->bounded(1000, 9999));
+
+	return timePart + randomPart;
+}

@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QRandomGenerator>
 
 #define NUM_OF_METROLINES 17 //地铁线路数
 #define DATABASE_USERNAME ("root")
@@ -47,6 +48,7 @@ private:
 
 
 protected:
+	QString generateSerialNumber();
 
 
 signals:

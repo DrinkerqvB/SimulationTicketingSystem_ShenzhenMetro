@@ -1,16 +1,18 @@
 #pragma once
 //#include "D:\Qt\6.9.1\msvc2022_64\include\QtCore\qobject.h"
 #include <QObject>
+#include <QDateTime>
+
 class OrderInformation :
     public QObject
 {
 public:
     QString serialNumber;
 
-    QString orderDatetime;
+    QDateTime orderDatetime;
 
-    QString enterStationDatetime;
-    QString exitStationDatetime;
+    QDateTime enterStationDatetime;
+    QDateTime exitStationDatetime;
 
     QString startLine;//
     QString startStation;//
