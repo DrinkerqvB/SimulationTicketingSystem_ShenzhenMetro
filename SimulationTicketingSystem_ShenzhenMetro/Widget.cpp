@@ -67,6 +67,15 @@ Widget::Widget(QWidget *parent)
     connect(payPage, &PayPage::cancelPay, [=]() {
         stackedWidget->setCurrentWidget(buyPage);
         });
+    connect(mapSearchPage, &MapSearchPage::returnHome, [=]() {
+        stackedWidget->setCurrentWidget(homePage);
+        });
+    connect(mapSearchPage, &MapSearchPage::gotoBuyPage, [=]() {
+        stackedWidget->setCurrentWidget(buyPage);
+        });
+
+    connect(mapSearchPage, &MapSearchPage::searchLines, costCalculator, &PaymentCalculation::searchStationForLine);
+    connect(costCalculator, &PaymentCalculation::sendStationLines, mapSearchPage, &MapSearchPage::receiveAndShowStationLines);
     connect(costCalculator, &PaymentCalculation::xlsxLoaded, this, [=](bool isXlsxLoaded) {
         if (isXlsxLoaded == true) {
             QMessageBox::information(this, "信息", QString("表格读取成功"));

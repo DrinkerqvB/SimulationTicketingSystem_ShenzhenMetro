@@ -2,6 +2,7 @@
 
 QString url1 = "./CostSheet/附件1 2025年第一批新线开通线网普通车厢票价表.xlsx";
 QString url2 = "./CostSheet/附件2 2025年第一批新线开通线网商务车厢票价表.xlsx";
+int* pos = new int[2];
 
 PaymentCalculation::PaymentCalculation():QObject()
 {
@@ -13,6 +14,7 @@ PaymentCalculation::PaymentCalculation():QObject()
 	financialRecord.setDatabaseName("financialRecord");
 	financialRecord.setUserName(DATABASE_USERNAME);
 	financialRecord.setPassword(DATABASE_PASSWORD);
+	bool ok = financialRecord.open();
 
 	QSqlQuery financialRecord_query("create database financialRecord;");
 	financialRecord_query.exec();
@@ -127,6 +129,33 @@ void PaymentCalculation::loadMetroLineGroup(void)
 	}
 }
 
+QStringList PaymentCalculation::searchStationForLine(QString station)
+{
+	QStringList answer;
+	QString tempLineName;
+	QString tempStationName;
+	/*for (int row = 4;tempStationName.isNull()!=true; row++) {
+		tempLineName = Xlsx_ordinaryTickets->read(row, 1).toString();
+		tempStationName = Xlsx_ordinaryTickets->read(row, 3).toString();
+		if (tempStationName == station) {
+			answer.append(tempLineName);
+		}
+	}*/
+
+	int row = 4;
+	do {
+		tempLineName = Xlsx_ordinaryTickets->read(row, 1).toString();
+		tempStationName = Xlsx_ordinaryTickets->read(row, 3).toString();
+		if (tempStationName == station) {
+			answer.append(tempLineName);
+		}
+		row++;
+	} while (tempStationName.isNull() != true);
+
+	emit sendStationLines(answer);
+	return answer;
+}
+
 
 float PaymentCalculation::calculateOneTicket(QString startLine, QString startStation, QString endLine, QString endStation,bool isBusinessTicket)
 {
@@ -149,7 +178,7 @@ float PaymentCalculation::calculateOneTicket(QString startLine, QString startSta
 
 int* PaymentCalculation::findStation(QString line, QString station)
 {
-	int* pos = new int[2];
+	
 	QVariant data_station,data_line;
 	int row=3, col=3;
 	//读取行值

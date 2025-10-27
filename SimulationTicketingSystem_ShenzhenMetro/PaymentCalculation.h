@@ -31,6 +31,7 @@ public:
 	void calculateTotalCost(void);
 	float getSingleCost(void);
 	float getTotalCost(void);
+	
 
 	Document* Xlsx_ordinaryTickets;
 	Document* Xlsx_businessTickets;
@@ -53,9 +54,11 @@ signals:
 	void Debug(QVariant var1, QVariant var2, QVariant var3, QVariant var4);
 	void metroLineGroupLoaded(MetroLine* metroLineGroup);
 	void sendPrice(float singlePrice, float totalPrice);
+	void sendStationLines(QStringList stationLines);
 
 public slots:
 	void receiveOrderInformation(QString startLine, QString startStation, QString endLine, QString endStation, int ticketNum, bool isBusinessTicket);
 	void insertIntoDatabase(void);
+	QStringList searchStationForLine(QString station);
 };
 
