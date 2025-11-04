@@ -42,7 +42,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.9.1_msvc2022_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;network;widgets;sql</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -66,6 +66,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>D:\Qt\6.9.1\msvc2022_64\include\QtCore\6.9.1;D:\Qt\6.9.1\msvc2022_64\include\QtCore\6.9.1\QtCore;D:\Project\Real_Project\InnovationTrainingCourseB\SimulationTicketingSystem_ShenzhenMetro\SimulationTicketingSystem_ShenzhenMetro\QXlsx\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Project\Real_Project\InnovationTrainingCourseB\SimulationTicketingSystem_ShenzhenMetro\SimulationTicketingSystem_ShenzhenMetro\QXlsx\header;D:\Qt\6.9.1\msvc2022_64\include\QtCore\6.9.1\QtCore;D:\Qt\6.9.1\msvc2022_64\include\QtCore\6.9.1;D:\Qt\6.9.1\msvc2022_64\include\QtCore;D:\Qt\6.9.1\msvc2022_64\include;D:\Project\Real_Project\InnovationTrainingCourseB\SimulationTicketingSystem_ShenzhenMetro\SimulationTicketingSystem_ShenzhenMetro\CostSheet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">

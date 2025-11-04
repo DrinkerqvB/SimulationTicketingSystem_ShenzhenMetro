@@ -307,6 +307,7 @@ QString PaymentCalculation::generateSerialNumber()
 {
 	// 格式：年月日时分秒毫秒 + 随机数
 	QDateTime currentTime = QDateTime::currentDateTime();
+	currentTime.setTimeZone(QTimeZone("Asia/Shanghai"));
 	QString timePart = currentTime.toString("yyyyMMddhhmmsszzz");
 	QString randomPart = QString::number(QRandomGenerator::global()->bounded(1000, 9999));
 
