@@ -2,7 +2,7 @@
 
 QString url1 = "./CostSheet/附件1 2025年第一批新线开通线网普通车厢票价表.xlsx";
 QString url2 = "./CostSheet/附件2 2025年第一批新线开通线网商务车厢票价表.xlsx";
-int* pos = new int[2];
+
 
 PaymentCalculation::PaymentCalculation():QObject()
 {
@@ -171,6 +171,8 @@ float PaymentCalculation::calculateOneTicket(QString startLine, QString startSta
 	else {
 		cost = Xlsx_businessTickets->read(posCost[0], posCost[1]).toFloat();
 	}
+	delete[] posStart;
+	delete[] posEnd;
 
 	return cost;
 	
@@ -178,7 +180,7 @@ float PaymentCalculation::calculateOneTicket(QString startLine, QString startSta
 
 int* PaymentCalculation::findStation(QString line, QString station)
 {
-	
+	int* pos = new int[2];
 	QVariant data_station,data_line;
 	int row=3, col=3;
 	//读取行值
