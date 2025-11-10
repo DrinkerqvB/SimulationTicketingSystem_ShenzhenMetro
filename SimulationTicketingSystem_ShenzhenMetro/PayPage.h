@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include <QGraphicsPixmapItem>
+#include <QMessageBox>
 #include "ui_PayPage.h"
 
 #include "PaymentCalculation.h"
@@ -43,6 +44,7 @@ protected:
 signals:
 	void cancelPay(void);
 	void paySuccessful(double change);
+	void payNotEnough(double needToPay);
 
 public slots:
 	void receivePrice(float singlePrice, float totalPrice);

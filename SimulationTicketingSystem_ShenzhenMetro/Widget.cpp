@@ -96,6 +96,9 @@ Widget::Widget(QWidget *parent)
         QMessageBox::information(this, "信息", "购票成功，找零 ￥" + QString::number(change, 'f', 2));
         stackedWidget->setCurrentWidget(homePage);
         });
+    connect(payPage, &PayPage::payNotEnough, [=](double needToPay) {
+        QMessageBox::warning(this, "警告", "金额不足，仍需支付 ￥" + QString::number(needToPay, 'f', 2));
+        });
 
     //调试用
     //connect(buyPage->paymentCalculator,)

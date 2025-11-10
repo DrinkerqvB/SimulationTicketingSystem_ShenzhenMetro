@@ -1,7 +1,7 @@
 #include "PaymentCalculation.h"
 
-QString url1 = "./CostSheet/附件1 2025年第一批新线开通线网普通车厢票价表.xlsx";
-QString url2 = "./CostSheet/附件2 2025年第一批新线开通线网商务车厢票价表.xlsx";
+QString url1 = "./CostSheet/普通车厢票价表.xlsx";
+QString url2 = "./CostSheet/商务车厢票价表.xlsx";
 
 
 PaymentCalculation::PaymentCalculation():QObject()

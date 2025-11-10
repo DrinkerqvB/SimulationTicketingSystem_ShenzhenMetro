@@ -21,6 +21,7 @@ PayPage::PayPage(QWidget *parent)
 	hasPaid = 0;
 }
 
+
 PayPage::~PayPage()
 {
 	delete ui;
@@ -28,6 +29,8 @@ PayPage::~PayPage()
 
 void PayPage::on_pushButton_cancelPay_clicked(void)
 {
+	needToPay = 0;
+	hasPaid = 0;
 	emit cancelPay();
 }
 
@@ -66,7 +69,12 @@ void PayPage::on_pushButton_paySuccessful_clicked(void)
 {
 	double change = hasPaid - totalPrice;
 	hasPaid = 0;
-	emit paySuccessful(change);
+	if (needToPay <= 0) {
+		emit paySuccessful(change);
+	}
+	else {
+		emit payNotEnough(needToPay);
+	}
 }
 
 void PayPage::on_doubleSpinBox_hasPaid_valueChanged(double d)
