@@ -91,8 +91,9 @@ Widget::Widget(QWidget *parent)
     connect(buyPage, &BuyPage::stationChanged, costCalculator, &PaymentCalculation::receiveOrderInformation);
     connect(costCalculator, &PaymentCalculation::sendPrice, buyPage, &BuyPage::receivePrice);
     connect(costCalculator, &PaymentCalculation::sendPrice, payPage, &PayPage::receivePrice);
-    connect(payPage, &PayPage::paySuccessful, [=]() {
+    connect(payPage, &PayPage::paySuccessful, [=](double change) {
         costCalculator->insertIntoDatabase();
+        QMessageBox::information(this, "信息", "购票成功，找零 ￥" + QString::number(change, 'f', 2));
         stackedWidget->setCurrentWidget(homePage);
         });
 

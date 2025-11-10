@@ -31,6 +31,10 @@ private:
 	QGraphicsPixmapItem* QRcode_AliPay_pixmapItem;
 	QGraphicsScene* scene_map_AliPay;
 
+	double totalPrice;
+	double needToPay;
+	double hasPaid;
+
 	//PaymentCalculation* costCalculator = nullptr;//票价计算（后端）
 
 protected:
@@ -38,7 +42,7 @@ protected:
 
 signals:
 	void cancelPay(void);
-	void paySuccessful(void);
+	void paySuccessful(double change);
 
 public slots:
 	void receivePrice(float singlePrice, float totalPrice);
@@ -46,6 +50,7 @@ public slots:
 private slots:
 	void on_pushButton_cancelPay_clicked(void);
 	void on_pushButton_paySuccessful_clicked(void);
+	void on_doubleSpinBox_hasPaid_valueChanged(double d);
 	
 	//void setCostCalculator(PaymentCalculation* costCalculator);
 
