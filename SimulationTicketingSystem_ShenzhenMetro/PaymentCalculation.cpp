@@ -1,8 +1,8 @@
 #include "PaymentCalculation.h"
 
-QString url1 = "./CostSheet/附件1 2025年第一批新线开通线网普通车厢票价表.xlsx";
-QString url2 = "./CostSheet/附件2 2025年第一批新线开通线网商务车厢票价表.xlsx";
-int* pos = new int[2];
+QString url1 = "./CostSheet/普通车厢票价表.xlsx";
+QString url2 = "./CostSheet/商务车厢票价表.xlsx";
+
 
 PaymentCalculation::PaymentCalculation():QObject()
 {
@@ -90,11 +90,11 @@ void PaymentCalculation::loadMetroLineGroup(void)
 	QVariant line, lastLine, station;
 	int row = 4;
 
-	///*调试用*/
-	//QString lineString = line.toString();
-	//QString lastLineString = lastLine.toString();
-	//QString stationString = station.toString();
-	///*******/
+	/*调试用*/
+	QString lineString = line.toString();
+	QString lastLineString = lastLine.toString();
+	QString stationString = station.toString();
+	/*******/
 
 	for (int i = 0; i < NUM_OF_METROLINES; i++) {
 
@@ -102,11 +102,11 @@ void PaymentCalculation::loadMetroLineGroup(void)
 		station = Xlsx_ordinaryTickets->read(row, 3);
 		int countStationNum;
 
-		///*调试用*/
-		//lineString = line.toString();
-		//lastLineString = lastLine.toString();
-		//stationString = station.toString();
-		///*******/
+		/*调试用*/
+		lineString = line.toString();
+		lastLineString = lastLine.toString();
+		stationString = station.toString();
+		/*******/
 
 		for (countStationNum = 0; (line == lastLine)&&station.isNull()!=true; countStationNum++) {
 			metroLineGroup[i].lineName = line.toString();
@@ -118,11 +118,11 @@ void PaymentCalculation::loadMetroLineGroup(void)
 			if (line.isNull() == true) {
 				line = lastLine;
 			}
-			///*调试用*/
-			//lineString = line.toString();
-			//lastLineString = lastLine.toString();
-			//stationString = station.toString();
-			///*******/
+			/*调试用*/
+			lineString = line.toString();
+			lastLineString = lastLine.toString();
+			stationString = station.toString();
+			/*******/
 		}
 		metroLineGroup[i].stationsNum = metroLineGroup[i].lineStations.length();
 
@@ -171,6 +171,8 @@ float PaymentCalculation::calculateOneTicket(QString startLine, QString startSta
 	else {
 		cost = Xlsx_businessTickets->read(posCost[0], posCost[1]).toFloat();
 	}
+	delete[] posStart;
+	delete[] posEnd;
 
 	return cost;
 	
@@ -178,14 +180,24 @@ float PaymentCalculation::calculateOneTicket(QString startLine, QString startSta
 
 int* PaymentCalculation::findStation(QString line, QString station)
 {
-	
-	QVariant data_station,data_line;
+	int* pos = new int[2];
+	QVariant data_station, data_line, data_lastLine;
+	QString debug_data_station, debug_data_line;
 	int row=3, col=3;
 	//读取行值
 	do {
 		row++;
+		data_lastLine = data_line;
 		data_station = Xlsx_ordinaryTickets->read(row, 3);
 		data_line = Xlsx_ordinaryTickets->read(row, 1);
+		if (data_line.isNull() == true) {
+			data_line = data_lastLine;
+		}
+
+		///******************/
+		//debug_data_line = data_line.toString();
+		//debug_data_station = data_station.toString();
+		///*******************/
 		
 	} while (!(data_station.isNull() == true || (data_station.toString() == station && data_line.toString() == line)));
 
@@ -194,8 +206,17 @@ int* PaymentCalculation::findStation(QString line, QString station)
 	//读取列值
 	do {
 		col++;
+		data_lastLine = data_line;
 		data_station = Xlsx_ordinaryTickets->read(3, col);
 		data_line = Xlsx_ordinaryTickets->read(1, col);
+		if (data_line.isNull() == true) {
+			data_line = data_lastLine;
+		}
+
+		///******************/
+		//debug_data_line = data_line.toString();
+		//debug_data_station = data_station.toString();
+		///*******************/
 
 	} while (!(data_station.isNull() == true || (data_station.toString() == station && data_line.toString() == line)));
 

@@ -18,8 +18,9 @@ PayPage::PayPage(QWidget *parent)
 	scene_map_AliPay = new QGraphicsScene;
 	scene_map_AliPay->addItem(QRcode_AliPay_pixmapItem);
 
-
+	hasPaid = 0;
 }
+
 
 PayPage::~PayPage()
 {
@@ -28,6 +29,8 @@ PayPage::~PayPage()
 
 void PayPage::on_pushButton_cancelPay_clicked(void)
 {
+	needToPay = 0;
+	hasPaid = 0;
 	emit cancelPay();
 }
 
@@ -40,6 +43,8 @@ void PayPage::receivePrice(float singlePrice, float totalPrice)
 {
 	ui->lineEdit_totalPayment->setText(QString::number(totalPrice, 'f', 2));
 	ui->lineEdit_needToPay->setText(QString::number(totalPrice, 'f', 2));
+
+	this->totalPrice = totalPrice;
 
 	*QRcode_WeixinPay = QPixmap(":/images/icon/微信支付.png");
 	QRcode_WeixinPay_pixmapItem->setPixmap(*QRcode_WeixinPay);
@@ -62,7 +67,25 @@ void PayPage::receivePrice(float singlePrice, float totalPrice)
 
 void PayPage::on_pushButton_paySuccessful_clicked(void)
 {
-	emit paySuccessful();
+	double change = hasPaid - totalPrice;
+	hasPaid = 0;
+	if (needToPay <= 0) {
+		emit paySuccessful(change);
+	}
+	else {
+		emit payNotEnough(needToPay);
+	}
+}
+
+void PayPage::on_doubleSpinBox_hasPaid_valueChanged(double d)
+{
+	hasPaid = d;
+	needToPay = totalPrice - hasPaid;
+	if (needToPay < 0) {
+		needToPay = 0;
+	}
+
+	ui->lineEdit_needToPay->setText(QString::number(needToPay, 'f', 2));
 }
 
 //void PayPage::resizeEvent(QResizeEvent* event)
