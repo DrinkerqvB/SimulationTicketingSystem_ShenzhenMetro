@@ -132,7 +132,7 @@ void PaymentCalculation::loadMetroLineGroup(void)
 QStringList PaymentCalculation::searchStationForLine(QString station)
 {
 	QStringList answer;
-	QString tempLineName;
+	QString tempLineName,lastLineName;
 	QString tempStationName;
 	/*for (int row = 4;tempStationName.isNull()!=true; row++) {
 		tempLineName = Xlsx_ordinaryTickets->read(row, 1).toString();
@@ -144,7 +144,12 @@ QStringList PaymentCalculation::searchStationForLine(QString station)
 
 	int row = 4;
 	do {
+		lastLineName = tempLineName;
 		tempLineName = Xlsx_ordinaryTickets->read(row, 1).toString();
+		if (tempLineName.isNull() == true) {
+			tempLineName = lastLineName;
+		}
+		
 		tempStationName = Xlsx_ordinaryTickets->read(row, 3).toString();
 		if (tempStationName == station) {
 			answer.append(tempLineName);
