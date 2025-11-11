@@ -19,6 +19,7 @@ PayPage::PayPage(QWidget *parent)
 	scene_map_AliPay->addItem(QRcode_AliPay_pixmapItem);
 
 	hasPaid = 0;
+	needToPay = 65535;
 }
 
 
@@ -45,6 +46,8 @@ void PayPage::receivePrice(float singlePrice, float totalPrice)
 	ui->lineEdit_needToPay->setText(QString::number(totalPrice, 'f', 2));
 
 	this->totalPrice = totalPrice;
+	this->needToPay = totalPrice;
+	
 
 	*QRcode_WeixinPay = QPixmap(":/images/icon/微信支付.png");
 	QRcode_WeixinPay_pixmapItem->setPixmap(*QRcode_WeixinPay);
